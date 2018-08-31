@@ -9,6 +9,10 @@
 			Select image to crop: <input type="file" id="fileInput" name="file" multiple="true" />
 		</div>
 		<div>
+			Select image to create a list_thumb
+			<input type="file" id="files" name="files[]" multiple />
+		</div>
+		<div>
 			<canvas id="imageCanvas" width="600" height="400" style="border:0px solid #000000;">
 			</canvas>
 		</div>
@@ -16,7 +20,7 @@
 		Cropped image:
 		</div>
 		<div id="preview"></div>
-		<div id="list_thumb"></div>
+		<output id="list"></output>
 		<canvas width="50" height="50" id="canvas"/>
 		<script type="text/javascript" src="js/crop.js"></script>
 	</body>
