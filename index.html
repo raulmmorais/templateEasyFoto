@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head lang="pt-BR">
+		<meta charset="UTF-8">
+		<title>Image Cropper Test</title>
+	</head>
+	<body>
+		<div>
+			Select image to crop: <input type="file" id="fileInput" name="file" multiple="true" />
+		</div>
+		<div>
+			<canvas id="imageCanvas" width="600" height="400" style="border:0px solid #000000;">
+			</canvas>
+		</div>
+		<div>
+		Cropped image:
+		</div>
+		<div id="preview"></div>
+		<div id="list_thumb"></div>
+		<canvas width="50" height="50" id="canvas"/>
+		<script type="text/javascript" src="js/crop.js"></script>
+	</body>
+</html>
