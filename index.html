@@ -5,7 +5,7 @@
 		<title>Image Cropper Test</title>
 	</head>
 	<body>
-		<div>
+		<div style="display: none">
 			Select image to crop: <input type="file" id="fileInput" name="file" multiple="true" />
 		</div>
 		<div>
@@ -21,7 +21,9 @@
 		</div>
 		<div id="preview"></div>
 		<output id="list"></output>
-		<canvas width="50" height="50" id="canvas"/>
+		<canvas width="50" height="50" id="canvas"/></canvas>
+		<div id="msg"></div>
 		<script type="text/javascript" src="js/crop.js"></script>
+		<script type="text/javascript" src="js/thunbs.js"></script>
 	</body>
 </html>

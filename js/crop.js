@@ -135,7 +135,7 @@ var DragMarker = (function (_super) {
             ctx.lineTo(p.x + this.position.x, p.y + this.position.y);
         }
         ctx.closePath();
-        ctx.fillStyle = 'rgba(255,228,0,1)';
+        ctx.fillStyle = 'rgba(255,255,255,1)';
         ctx.fill();
     };
     DragMarker.prototype.recalculatePosition = function (bounds) {
@@ -172,7 +172,7 @@ var CornerMarker = (function (_super) {
         ctx.lineTo(this.position.x, this.position.y);
         ctx.closePath();
         ctx.lineWidth = 2;
-        ctx.strokeStyle = 'rgba(255,228,0,1)';
+        ctx.strokeStyle = 'rgba(255,255,255,1)';
         ctx.stroke();
     };
     CornerMarker.prototype.drawCornerFill = function (ctx) {
@@ -369,7 +369,7 @@ var ImageCropper = (function () {
             }
             this.center.draw(ctx);
             ctx.lineWidth = 2;
-            ctx.strokeStyle = 'rgba(255,228,0,1)';
+            ctx.strokeStyle = 'rgba(255,255,255,1)';
             ctx.strokeRect(bounds.left, bounds.top, bounds.getWidth(), bounds.getHeight());
         }
         else {
@@ -953,8 +953,8 @@ function previewLoaded(img) {
         document.getElementById("preview").appendChild(img);
     }
 }
-function handleFileSelect(evt) {
-    var file = evt.target.files[0];
+function handleFileToCrop(file) {
+    //var file = evt.target.files[0];
     var reader = new FileReader();
     var img = new Image();
     img.addEventListener("load", function () {
@@ -968,6 +968,6 @@ function handleFileSelect(evt) {
         reader.readAsDataURL(file);
     }
 }
-document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+document.getElementById('fileInput').addEventListener('change', handleFileToCrop, false);
 //# sourceMappingURL=ImageCropperTest.js.map
 //# sourceMappingURL=ImageCropper.js.map
