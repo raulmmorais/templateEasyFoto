@@ -3,6 +3,7 @@
 	<head lang="pt-BR">
 		<meta charset="UTF-8">
 		<title>Image Cropper Test</title>
+		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 	</head>
 	<body>
 		<div style="display: none">
@@ -15,13 +16,14 @@
 		<div>
 			<canvas id="imageCanvas" width="600" height="400" style="border:0px solid #000000;">
 			</canvas>
+
+			<output id="list"></output>
+			<button type="button" id="confirm">Ok</button>
 		</div>
 		<div>
 		Cropped image:
 		</div>
 		<div id="preview"></div>
-		<output id="list"></output>
-		<canvas width="50" height="50" id="canvas"/></canvas>
 		<div id="msg"></div>
 		<script type="text/javascript" src="js/crop.js"></script>
 		<script type="text/javascript" src="js/thunbs.js"></script>
