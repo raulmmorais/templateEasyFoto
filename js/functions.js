@@ -37,5 +37,13 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 }else {
   console.log('Sorry');
 }
+//convert image from tag to a file
+file = null
+fetch(img[0].src)
+.then(res => res.blob())
+.then(blob => {
+  file = new File([blob], 'cars.jpg', blob)
+  console.log(file)
+})
 
 handleFileToCrop(document.getElementById('files').files[0])
