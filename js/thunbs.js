@@ -10,7 +10,6 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
   // files is a FileList of File objects. List some properties.
-  var idImg = 0
   for (var i = 0, f; f = files[i]; i++) {
     if (!f.type.match('image.*')) {
         continue;
@@ -19,17 +18,23 @@ function handleFileSelect(evt) {
     reader.onload = (function(theFile){
       return function(e){
         var span = document.createElement('span')
-        span.innerHTML = ['<a href="#" onclick="handleFileToCrop(document.getElementById(\'files\').files['+ idImg +'])">'+
+        span.innerHTML = ['<a href="#" onclick="callFileToCrop(this)">'+
         '<img class="thumb" src="', e.target.result,
         '" title="', escape(theFile.name), '"/></a>'].join('')
         document.getElementById('list').insertBefore(span, null)
-        idImg++
       }
     })(f)
     reader.readAsDataURL(f);
-    //output.push('<li><strong><a href="#" onclick="handleFileToCrop(document.getElementById(\'files\').files['+ i +'])">', escape(f.name), '</a></strong> (', f.type || 'n/a', ') - ',
-    //            f.size, ' bytes, last modified: ',
-    //            f.lastModifiedDate.toLocaleDateString(), '</li>');
   }
-  //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
 }
+function callFileToCrop(element){
+  img = element.firstElementChild
+  file = null
+  fetch(img.src)
+  .then(res => res.blob())
+  .then(blob => {
+    file = new File([blob], 'cars.jpg', blob)
+    handleFileToCrop(file)
+  })
+}
+//handleFileToCrop(document.getElementById(\'files\').files['+ idImg +'])

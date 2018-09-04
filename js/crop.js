@@ -832,7 +832,9 @@ var ImageCropper = (function () {
             }
             if (!didDraw) {
                 var el = e.target;
-                el.style.cursor = 'initial';
+                if(el.id=== 'imageCanvas'){
+                  el.style.cursor = 'initial';
+                }
             }
         }
         if (!didDraw && !cursorDrawn && this.center.touchInBounds(cropTouch.x, cropTouch.y)) {
@@ -944,7 +946,7 @@ window.onload = function () {
 };
 function preview() {
     if (crop.isImageSet()) {
-        var img = crop.getCroppedImage(300, 300);
+        var img = crop.getCroppedImage(600, 600);
         img.onload = (function () { return previewLoaded(img); });
     }
 }
