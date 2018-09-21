@@ -147,7 +147,7 @@ footer {
 }
 
 header {
-    background-image: url(assets/BCdoiYS0lvNK/adventure-2679498_1920.webp);
+    background-image: url(../BCdoiYS0lvNK/adventure-2679498_1920.webp);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom center;
@@ -157,11 +157,11 @@ header {
 }
 
 .nowebp header {
-    background-image: url(assets/BCdoiYS0lvNK/adventure-2679498_1920.jpg)
+    background-image: url(../BCdoiYS0lvNK/adventure-2679498_1920.jpg)
 }
 
 header .site-name {
-    background-image: url(assets/BCdoiYS0lvNK/logotipo_otimizado.svg);
+    background-image: url(../BCdoiYS0lvNK/logotipo_otimizado.svg);
     background-size: contain;
     display: block;
     width: 140px;
@@ -217,7 +217,7 @@ header .site-name span {
 .content .preview .smartphone {
     content: '';
     display: block;
-    background: url(assets/BCdoiYS0lvNK/preview.webp);
+    background: url(../BCdoiYS0lvNK/preview.webp);
     background-size: contain;
     width: 250px;
     height: 117px;
@@ -225,7 +225,7 @@ header .site-name span {
 }
 
 .nowebp .content .preview .smartphone {
-    background-image: url(assets/BCdoiYS0lvNK/preview.png)
+    background-image: url(../BCdoiYS0lvNK/preview.png)
 }
 
 .content .preview:after {
@@ -262,26 +262,26 @@ header .site-name span {
 .content .links .store-link.store-apple {
     display: inline-block;
     overflow: hidden;
-    background: url(assets/BCdoiYS0lvNK/appstore-lrg.svg) no-repeat;
+    background: url(../BCdoiYS0lvNK/appstore-lrg.svg) no-repeat;
     width: 135px;
     height: 40px;
     background-size: contain
 }
 
 .content .links .store-link.store-android {
-    background-image: url(assets/BCdoiYS0lvNK/google-play.webp)
+    background-image: url(../BCdoiYS0lvNK/google-play.webp)
 }
 
 .nowebp .content .links .store-link.store-apple {
-    background-image: url(assets/BCdoiYS0lvNK/app-store.png)
+    background-image: url(../BCdoiYS0lvNK/app-store.png)
 }
 
 .nowebp .content .links .store-link.store-android {
-    background-image: url(assets/BCdoiYS0lvNK/google-play.png)
+    background-image: url(../BCdoiYS0lvNK/google-play.png)
 }
 
 .content .highlight {
-    background: #ccc url(assets/BCdoiYS0lvNK/highlight.webp) center center no-repeat;
+    background: #ccc url(../BCdoiYS0lvNK/highlight.webp) center center no-repeat;
     background-size: cover;
     min-height: 100px;
     padding: 2rem .5rem;
@@ -290,7 +290,7 @@ header .site-name span {
 }
 
 .nowebp .content .highlight {
-    background-image: url(assets/BCdoiYS0lvNK/highlight.jpg)
+    background-image: url(../BCdoiYS0lvNK/highlight.jpg)
 }
 
 .content .differences {
@@ -304,13 +304,13 @@ header .site-name span {
 
 .content .examples {
     padding: 2rem .5rem;
-    background: url(assets/BCdoiYS0lvNK/bg-2.webp) top center no-repeat;
+    background: url(../BCdoiYS0lvNK/bg-2.webp) top center no-repeat;
     background-size: cover;
     min-height: 23rem
 }
 
 .nowebp .content .examples {
-    background-image: url(assets/BCdoiYS0lvNK/bg-2.jpg)
+    background-image: url(../BCdoiYS0lvNK/bg-2.jpg)
 }
 
 .content .examples:after {
@@ -531,7 +531,7 @@ table th {
         padding: 19rem .5rem
     }
     .content .differences {
-        background: url(assets/BCdoiYS0lvNK/bg-1.gif) top center no-repeat
+        background: url(../BCdoiYS0lvNK/bg-1.gif) top center no-repeat
     }
     .content .examples {
         min-height: 50rem
@@ -557,28 +557,28 @@ table th {
 
 @font-face {
     font-family: Lato;
-    src: url(assets/BCdoiYS0lvNK/Lato-Light.ttf);
+    src: url(../BCdoiYS0lvNK/Lato-Light.ttf);
     font-weight: 200;
     font-style: normal
 }
 
 @font-face {
     font-family: Lato;
-    src: url(assets/BCdoiYS0lvNK/Lato-Regular.ttf);
+    src: url(../BCdoiYS0lvNK/Lato-Regular.ttf);
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Lato;
-    src: url(assets/BCdoiYS0lvNK/Lato-Black.ttf);
+    src: url(../BCdoiYS0lvNK/Lato-Black.ttf);
     font-weight: 700;
     font-style: normal
 }
 
 @font-face {
     font-family: Lato;
-    src: url(assets/BCdoiYS0lvNK/Lato-Bold.ttf);
+    src: url(../BCdoiYS0lvNK/Lato-Bold.ttf);
     font-weight: 700;
     font-style: normal
 }

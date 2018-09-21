@@ -17,7 +17,7 @@ var hasWebP = !1;
         t.height > 0 && t.width > 0 || e()
     }, t.onerror = function () {
         e()
-    }, t.src = "webp/gallery/1.webp"
+    }, t.src = "/assets/webp/gallery/1.webp"
 }()
 
 function gtag() {
