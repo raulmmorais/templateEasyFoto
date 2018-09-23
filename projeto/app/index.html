@@ -46,6 +46,9 @@
                             <a class="store-link store-android" target="_blank" href="https://play.google.com/store/apps/details?id=com.easyfoto4u&utm_source=website" rel="external" title="Acesso ao Aplicativo na loja do Google">
                                 <span>Link para Loja Google Play</span>
                             </a>
+                            <a class="store-link store-android" target="_self" href="webapp/" rel="external" title="Acesso ao Aplicativo Web">
+                                <span>Link para Loja Google Play</span>
+                            </a>
                         </span>
                         <span class="smartphone"></span>
                         <p>Escolha as fotos dos momentos mais marcantes, ajuste as no próprio aplicativo e envie pra nós. Você receberá os quadros em casa!</p>
@@ -186,8 +189,34 @@
             </footer>
         </div>
         <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117906072-1"></script>-->
+        <script type="text/javascript">
+            function addRow(e, t, n) {
+                var d = document.createElement("tr"),
+                    a = document.createElement("td");
+                a.textContent = 5 + n + " Miniquadros", d.appendChild(a), (a = document.createElement("td")).textContent = "5", d.appendChild(a), (a = document.createElement("td")).textContent = n, d.appendChild(a), (a = document.createElement("td")).textContent = "R$" + (e + n * t).toFixed(2).replace(".", ","), d.appendChild(a), document.getElementById("prices").appendChild(d)
+            }
+            var priceBase = 150,
+                additional = 27;
+            document.getElementById("price").textContent = "R$" + priceBase.toFixed(2).replace(".", ","), document.getElementById("additional").textContent = "R$" + additional.toFixed(2).replace(".", ",");
+            for (var i = 0; i < 11; i++) addRow(priceBase, additional, i);
+            var hasWebP = !1;
+            ! function () {
+                function e() {
+                    document.body.classList.add("nowebp")
+                }
+                var t = new Image;
+                t.onload = function () {
+                    t.height > 0 && t.width > 0 || e()
+                }, t.onerror = function () {
+                    e()
+                }, t.src = "/assets/webp/gallery/1.webp"
+            }()
 
-        <script type="text/javascript" src="assets/js/deps.min.js"></script>
+            function gtag() {
+                dataLayer.push(arguments)
+            }
+            window.dataLayer = window.dataLayer || [], gtag("js", new Date), gtag("config", "UA-117906072-1")
+        </script>
         <script type="text/javascript" src="assets/js/app.min.js"></script>
     </body>
 </html>
