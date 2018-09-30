@@ -2,3 +2,15 @@
     border: 0px solid #000000;
     box-shadow: 3px 3px 6px 2px #999999;
 }
+footer.footer-app {
+    padding: 10px 0;
+}
+footer.footer-app h2, footer.footer-app h5{
+    margin-bottom: 0.2rem;
+}
+footer.footer-app h6, footer.footer-app p{
+    margin-bottom: 0;
+}
+.web-app .content .differences{
+    padding: 10px 0;
+}

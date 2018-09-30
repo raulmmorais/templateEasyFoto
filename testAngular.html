@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr" ng-app="testeApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Teste com angularjs</title>
+  </head>
+  <body>
+    <div ng-controller="myController as ctrl">
+      <h1>{{ctrl.titlePage}}</h1>
+      <div>
+        <!--
+        <input type="text" ng-model="ctrl.value"/>
+        <input type="button" value="Adicionar Nome" ng-click="ctrl.addName()"/>
+        -->
+        <input type="file" id="files" multiple onchange="angular.element(this).scope().setArquivo(this)"><br/>
+        <!--
+        <input type="button" value="Carregar Imagens" ng-click="ctrl.loagImages()"/>
+      -->
+      </div>
+      <div>
+        <div ng-repeat="image in ctrl.images">
+          <span>{{image.name}}</span> <input type="button" value="X" ng-click="ctrl.deleteImage($index)"> </br>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script type="text/javascript">
+      const app = angular.module('testeApp', []);
+
+      app.directive("fileread", [function () {
+          return {
+              scope: {
+                  fileread: "="
+              },
+              link: function (scope, element, attributes) {
+                  element.bind("change", function (changeEvent) {
+                      scope.$apply(function () {
+                          scope.fileread = changeEvent.target.files;
+                          // or all selected files:
+                          // scope.fileread = changeEvent.target.files;
+                      });
+                  });
+              }
+          }
+      }]);
+
+      (function(){
+        app.controller('myController', ['$scope',MyController]);
+
+        function MyController($scope){
+          const vm = this;
+          vm.titlePage = "Teste com angularjs"
+          vm.arquivos = new Array
+          vm.images = new Array
+
+          $scope.setArquivo = function(element) {
+            $scope.$apply(function($scope) {
+              //vm.images = element.files;
+              /*for (var i = 0; i < element.files.lenght; i++) {
+                vm.arquivos.splice(vm.arquivos.lenght,0, element.files[i]);
+              }*/
+              vm.arquivos = element.files;
+              vm.images = vm.arquivos;
+            });
+          };
+
+          vm.loagImages = function(){
+            vm.images = vm.arquivos
+            document.getElementById('files').value = ""
+          }
+          vm.deleteImage = function(index){
+            vm.images.splice(index, 1)
+          }
+        }
+      })()
+    </script>
+  </body>
+</html>

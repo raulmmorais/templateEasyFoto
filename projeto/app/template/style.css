@@ -294,12 +294,20 @@ header .site-name-min span {
     background-image: url(../BCdoiYS0lvNK/google-play.webp)
 }
 
+.content .links .store-link.web-app-button {
+    background-image: url(../BCdoiYS0lvNK/web-app-button.webp)
+}
+
 .nowebp .content .links .store-link.store-apple {
     background-image: url(../BCdoiYS0lvNK/app-store.png)
 }
 
 .nowebp .content .links .store-link.store-android {
     background-image: url(../BCdoiYS0lvNK/google-play.png)
+}
+
+.nowebp .content .links .store-link.web-app {
+    background-image: url(../BCdoiYS0lvNK/web-app-button.png)
 }
 
 .content .highlight {
@@ -626,7 +634,7 @@ table th {
         display: none
     }
     .content .links {
-        width: 360px
+        width: 520px
     }
     .content .links .store-link {
         width: 150px;
@@ -759,4 +767,8 @@ h6 {
 
 strong {
     font-weight: bolder
+}
+.container-thumbs {
+    max-height: 384px;
+    overflow-y: auto;
 }

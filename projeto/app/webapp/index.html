@@ -9,28 +9,28 @@
     <meta name="author" content="">
     <link rel="stylesheet" href="../assets/css/deps.min.css">
     <link rel="stylesheet" href="../assets/css/app.min.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="assets/BCdoiYS0lvNK/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="assets/BCdoiYS0lvNK/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/BCdoiYS0lvNK/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/BCdoiYS0lvNK/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/BCdoiYS0lvNK/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="assets/BCdoiYS0lvNK/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/BCdoiYS0lvNK/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/BCdoiYS0lvNK/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/BCdoiYS0lvNK/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/BCdoiYS0lvNK/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/BCdoiYS0lvNK/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/BCdoiYS0lvNK/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/BCdoiYS0lvNK/favicon-16x16.png">
-    <link rel="manifest" href="assets/BCdoiYS0lvNK/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="../assets/BCdoiYS0lvNK/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../assets/BCdoiYS0lvNK/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../assets/BCdoiYS0lvNK/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/BCdoiYS0lvNK/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../assets/BCdoiYS0lvNK/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../assets/BCdoiYS0lvNK/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../assets/BCdoiYS0lvNK/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../assets/BCdoiYS0lvNK/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/BCdoiYS0lvNK/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/BCdoiYS0lvNK/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/BCdoiYS0lvNK/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/BCdoiYS0lvNK/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/BCdoiYS0lvNK/favicon-16x16.png">
+    <link rel="manifest" href="../assets/BCdoiYS0lvNK/manifest.json">
     <meta name="msapplication-TileColor" content="#f9f9f9">
     <meta name="msapplication-TileImage" content="BCdoiYS0lvNK/ms-icon-144x144.png">
     <meta name="theme-color" content="#f9f9f9">
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper web-app">
         <div ng-include="'template/header.html'"></div>
-        <div class="content">
+        <div class="content" ng-controller="appController as ctrl">
             <div class="differences">
                 <div class="grid-row">
                     <div class="grid-cell-7">
@@ -40,16 +40,23 @@
                         <div class="grid-row">
                             <div class="grid-cell-12">
                                 <h4><strong>Escolha as imagens do seu computador</strong></h4>
-                                <input class="" type="file" id="files" name="files[]" multiple />
+                                <label for="files" class="" style="cursor: pointer;">Carregar imagens</label>
+                                <input class="" style="visibility: hidden;" type="file" id="files" name="files[]" multiple onchange="angular.element(this).scope().handleFileSelect(this)"/>
                             </div>
-                            <div class="grid-cell-5">
+                            <div class="grid-cell-5 container-thumbs">
+                                <div ng-if="ctrl.haveFiles" ng-repeat="file in ctrl.files">
+                                    <span>{{file.src}}</span>
+                                    <span>{{file.name}}</span>
+                                </div>
+                                <span ng-repeat="name in ctrl.names">{{name.nameFile}}</span>
+
                                 <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
                                 <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
                                 <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
                                 <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
                                 <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
                             </div>
-                            <div class="grid-cell-6">
+                            <div class="grid-cell-6 container-thumbs">
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
@@ -61,6 +68,7 @@
                 </div>
             </div>
         </div>
+        <div ng-include="'template/footer.html'"></div>
     </div>
 
     <script type="text/javascript" src="../assets/js/deps.min.js"></script>

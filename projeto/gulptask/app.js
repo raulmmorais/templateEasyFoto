@@ -18,8 +18,7 @@ gulp.task('app.css', ()=>{
         .pipe(gulp.dest('public/assets/css'))
 })
 gulp.task('app.js', ()=>{
-    return gulp.src('app/**/*.js')
-        .pipe(babel({presets:['env']}))//.pipe(uglify())
+    return gulp.src('app/**/*.js')//.pipe(babel({presets:['env']}))//.pipe(uglify())
         .pipe(concat('app.min.js'))
         .pipe(gulp.dest('public/assets/js'))
 })
