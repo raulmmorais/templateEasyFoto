@@ -60,7 +60,8 @@
                 vm.arquivos.splice(vm.arquivos.lenght,0, element.files[i]);
               }*/
               vm.arquivos = element.files;
-              vm.images = vm.arquivos;
+              vm.images = new Array(vm.arquivos);
+              //http://www.macoratti.net/16/04/ang_tut11.htm
             });
           };
 
