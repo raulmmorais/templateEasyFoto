@@ -14,12 +14,15 @@
         -->
         <input type="file" id="files" multiple onchange="angular.element(this).scope().setArquivo(this)"><br/>
         <!--
+        <input type="file" id="files" multiple><br/>
         <input type="button" value="Carregar Imagens" ng-click="ctrl.loagImages()"/>
-      -->
+        -->
       </div>
       <div>
         <div ng-repeat="image in ctrl.images">
-          <span>{{image.name}}</span> <input type="button" value="X" ng-click="ctrl.deleteImage($index)"> </br>
+          <span>{{image.name}}</span>
+          <span>{{image.src}}</span>
+          <input type="button" value="X" ng-click="ctrl.deleteImage($index)"> </br>
         </div>
       </div>
     </div>
@@ -52,21 +55,33 @@
           vm.titlePage = "Teste com angularjs"
           vm.arquivos = new Array
           vm.images = new Array
-
           $scope.setArquivo = function(element) {
             $scope.$apply(function($scope) {
-              //vm.images = element.files;
-              /*for (var i = 0; i < element.files.lenght; i++) {
-                vm.arquivos.splice(vm.arquivos.lenght,0, element.files[i]);
-              }*/
-              vm.arquivos = element.files;
-              vm.images = new Array(vm.arquivos);
+              let files = element.files
+              for (var i = 0; i < files.length; i++) {
+                let name =  files[i].name
+                let src
+                const reader = new FileReader();
+                reader.onload = function(){
+                  src = reader.result;
+                  console.log('SRC: ', src);
+                  vm.images.push({"name": name, 'src': src})
+                }
+                reader.readAsDataURL(files[i]);
+              }
+
+              //document.getElementById('files').value = ""
               //http://www.macoratti.net/16/04/ang_tut11.htm
             });
           };
 
           vm.loagImages = function(){
-            vm.images = vm.arquivos
+            console.log("Load Image");
+            let files = document.getElementById('files').files;
+            for (var i = 0; i < files.length; i++) {
+              vm.images.push({"name": files[i].name})
+            }
+
             document.getElementById('files').value = ""
           }
           vm.deleteImage = function(index){
@@ -74,6 +89,22 @@
           }
         }
       })()
+
+      (function(){
+        app.factory('fileSystem', [function(){
+          function getSrc(file){
+            let src = ""
+            const reader = new FileReader()
+            reader.onload = function(){
+              src = reader.result
+            }
+            reder.readAsDataURL(file)
+            return src
+          }
+          return getSrc
+        }])
+      })()
+
     </script>
   </body>
 </html>
