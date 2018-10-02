@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr" ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <title>ng-image-input-with-preview</title>
+    <link rel="stylesheet" href="projeto/node_modules/ng-image-input-with-preview/dist/ng-image-input-with-preview.css">
+    <style media="screen">
+      img{
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="" ng-controller="imgController as ctrl">
+      <h1>{{ctrl.title}}</h1>
+      <input type="file"
+            name="image"
+            image-with-preview
+            multiple
+            ng-model = ctrl.image
+            accept="image/jpeg,image/png">
+      <br/>
+      <img ng-show="ctrl.image.src" alt="" ng-src="{{ctrl.image.src}}" ng-click="ctrl.data()">
+    </div>
+
+
+    <script type="text/javascript" src="projeto/node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="projeto/node_modules/ng-image-input-with-preview/dist/ng-image-input-with-preview.js"></script>
+    <script type="text/javascript">
+      const app = angular.module('app', ['ngImageInputWithPreview']);
+
+      app.controller('imgController', [imgController]);
+
+      function imgController(){
+        vm = this;
+        vm.title = "ng-image teste"
+
+        vm.data = function(){
+          console.log(vm.image);
+        }
+      }
+
+    </script>
+  </body>
+</html>

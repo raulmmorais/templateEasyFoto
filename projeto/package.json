@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "\u0016https://github.com/raulmmorais/templateEasyFoto.git"
+    "url": "https://github.com/raulmmorais/templateEasyFoto.git"
   },
   "author": "Calindra",
   "license": "ISC",
@@ -32,6 +32,7 @@
     "run-sequence": "2.2.0"
   },
   "dependencies": {
-    "ng-image-input-with-preview": "^1.0.0"
+    "ng-image-input-with-preview": "^1.0.0",
+    "npm": "^6.4.1"
   }
 }
