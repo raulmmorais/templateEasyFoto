@@ -21,7 +21,8 @@
       <div>
         <div ng-repeat="image in ctrl.images">
           <span>{{image.name}}</span>
-          <span>{{image.src}}</span>
+          <img src="{{image.src}}" alt="{{image.name}}" title="{{image.name}}" width="75">
+
           <input type="button" value="X" ng-click="ctrl.deleteImage($index)"> </br>
         </div>
       </div>
@@ -47,10 +48,28 @@
           }
       }]);
 
-      (function(){
-        app.controller('myController', ['$scope',MyController]);
+      app.service('fileService', [
+        function(){
+          this.getUrlFile = function(file){
+            var reader = new FileReader();
+            var src = "";
+            reader.onload = function(){
+              src = reader.result
+              console.log(src);
+            }
+            reader.readAsDataURL(file)
+            return src;
+          }
+          this.getFileName = function(file){
+            return file.name;
+          }
+        }
+      ]);
 
-        function MyController($scope){
+      (function(){
+        app.controller('myController', ['$scope', 'fileService',MyController]);
+
+        function MyController($scope, fileService){
           const vm = this;
           vm.titlePage = "Teste com angularjs"
           vm.arquivos = new Array
@@ -59,19 +78,20 @@
             $scope.$apply(function($scope) {
               let files = element.files
               for (var i = 0; i < files.length; i++) {
-                let name =  files[i].name
-                let src
-                const reader = new FileReader();
-                reader.onload = function(){
-                  src = reader.result;
-                  console.log('SRC: ', src);
-                  vm.images.push({"name": name, 'src': src})
-                }
-                reader.readAsDataURL(files[i]);
+                let name =  fileService.getFileName(files[i])
+                let src = fileService.getUrlFile(files[i])
+                vm.images.push({"name": name, 'src': src})
+                //const reader = new FileReader();
+                //console.log('SRC: ', src);
+                //reader.onload = function(){
+                  //src = reader.result;
+                //}
+                //reader.readAsDataURL(files[i]);
               }
 
               //document.getElementById('files').value = ""
               //http://www.macoratti.net/16/04/ang_tut11.htm
+              //https://www.npmjs.com/package/ng-image-input-with-preview
             });
           };
 
@@ -88,21 +108,6 @@
             vm.images.splice(index, 1)
           }
         }
-      })()
-
-      (function(){
-        app.factory('fileSystem', [function(){
-          function getSrc(file){
-            let src = ""
-            const reader = new FileReader()
-            reader.onload = function(){
-              src = reader.result
-            }
-            reder.readAsDataURL(file)
-            return src
-          }
-          return getSrc
-        }])
       })()
 
     </script>

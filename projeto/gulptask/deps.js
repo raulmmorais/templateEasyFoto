@@ -11,6 +11,7 @@ gulp.task('deps.js', ()=>{
         'node_modules/@uirouter/angularjs/release/angular-ui-router.min.js',
         'node_modules/angular-animate/angular-animate.min.js',
         'node_modules/angular-toastr/dist/angular-toastr.tpls.min.js',
+        'node_modules/ng-image-input-with-preview/dist/ng-image-input-with-preview.js',
     ])
         .pipe(uglify())
         .pipe(concat('deps.min.js'))
@@ -19,6 +20,7 @@ gulp.task('deps.js', ()=>{
 gulp.task('deps.css', ()=>{
     return gulp.src([
         'node_modules/angular-toastr/dist/angular-toastr.min.css',
+        'node_modules/ng-image-input-with-preview/dist/ng-image-input-with-preview.css',
     ])
         .pipe(uglifycss({"ugglyComments": true}))
         .pipe(concat('deps.min.css'))
