@@ -39,22 +39,33 @@
                     <div class="grid-cell-5">
                         <div class="grid-row">
                             <div class="grid-cell-12">
-                                <h4><strong>Escolha as imagens do seu computador</strong></h4>
-                                <label for="files" class="" style="cursor: pointer;">Carregar imagens</label>
-                                <input class="" style="visibility: hidden;" type="file" id="files" name="files[]" multiple onchange="angular.element(this).scope().handleFileSelect(this)"/>
+                                <h4><strong>{{ctrl.title}}</strong></h4>
+                                <label for="files" class="btn btn-add-image">Carregar imagens</label>
+                                <input type="file"
+                                      style="visibility: hidden;"
+                                      name="image"
+                                      id="files"
+                                      image-with-preview
+                                      multiple
+                                      ng-model = ctrl.image
+                                      accept="image/jpeg,image/png"
+                                      ng-change="ctrl.getImages()">
                             </div>
-                            <div class="grid-cell-5 container-thumbs">
-                                <div ng-if="ctrl.haveFiles" ng-repeat="file in ctrl.files">
-                                    <span>{{file.src}}</span>
-                                    <span>{{file.name}}</span>
+                            <div class="grid-cell-5">
+                              <div class="container-thumbs">
+                                <div class="thumbs" ng-repeat="file in ctrl.result">
+                                  <div class="thumb-delete">
+                                    <a href="#" ng-click="ctrl.deleteImage($index)"><strong>x</strong></a>
+                                  </div>
+                                  <img ng-show="ctrl.image.src" ng-src="{{file.image.$$state.value}}">
+                                  <div class="thumb-play">
+                                    <a href="#" ng-click="ctrl.cropImage($index)"><strong>></strong></a>
+                                  </div>
                                 </div>
-                                <span ng-repeat="name in ctrl.names">{{name.nameFile}}</span>
-
-                                <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
-                                <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
-                                <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
-                                <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
-                                <div style="height: 75px; width: 130px; float: left; background: #cccccc; margin: 2px"></div>
+                              </div>
+                              <div class="grid-cell-12" ng-show="ctrl.result.length > 0">
+                                <strong>Selecione a imagem para edição</strong>
+                              </div>
                             </div>
                             <div class="grid-cell-6 container-thumbs">
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
@@ -67,6 +78,9 @@
                     </div>
                 </div>
             </div>
+
+		<div id="preview" style="display: none;"></div>
+		<div id="msg"></div>
         </div>
         <div ng-include="'template/footer.html'"></div>
     </div>

@@ -768,7 +768,3 @@ h6 {
 strong {
     font-weight: bolder
 }
-.container-thumbs {
-    max-height: 384px;
-    overflow-y: auto;
-}

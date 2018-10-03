@@ -15,12 +15,12 @@
       <h1>{{ctrl.title}}</h1>
       <input type="file"
             name="image"
-            id="file"
+            id="files"
             image-with-preview
             multiple
             ng-model = ctrl.image
             accept="image/jpeg,image/png"
-            ng-change="ctrl.data()">
+            ng-change="ctrl.getImages()">
       <br/>
       <div ng-repeat="file in ctrl.result" class="" style="width: 100px; display: block; float: left; margin: 5px;">
         <img ng-show="ctrl.image.src" ng-src="{{file.file.$$state.value}}"><br/>
@@ -39,11 +39,11 @@
 
       function imgController($scope, fileReader){
         vm = this;
-        vm.title = "ng-image teste"
+        vm.title = "Escolha as imagens do seu computador"
         vm.result = []
 
-        vm.data = function(){
-          var element = document.getElementById('file')
+        vm.getImages = function(){
+          var element = document.getElementById('files')
           var files = element.files;
 
           for (var i = 0; i < files.length; i++) {

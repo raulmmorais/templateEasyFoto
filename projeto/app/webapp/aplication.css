@@ -14,3 +14,65 @@ footer.footer-app h6, footer.footer-app p{
 .web-app .content .differences{
     padding: 10px 0;
 }
+.container-thumbs {
+    max-height: 384px;
+    min-height: 384px;
+    overflow-y: auto;
+}
+.container-thumbs .thumbs{
+  height: 75px;
+  width: 130px;
+  float: left;
+  margin: 2px
+}
+.container-thumbs .thumbs img{
+  width: 130px;
+  object-fit: cover;
+  max-height: 75px;
+  top: -22px;
+  position: relative;
+}
+.container-thumbs .thumbs .thumb-delete{
+  display: block;
+  width: 15px;
+  position: relative;
+  margin-top: 2px;
+  margin-left: 110px;
+  z-index: 10;
+}
+.container-thumbs .thumbs .thumb-play{
+  z-index: 10;
+  display: block;
+  margin: 2px auto;
+  position: relative;
+  top: -75px;
+}
+.container-thumbs .thumbs .thumb-delete a, .container-thumbs .thumbs .thumb-play a{
+  text-decoration: none;
+  font-size: 2em;
+  color: #666;
+  text-shadow: 1px 0px white;
+}
+.btn{
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-add-image{
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: pointer;
+}
