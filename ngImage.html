@@ -15,28 +15,41 @@
       <h1>{{ctrl.title}}</h1>
       <input type="file"
             name="image"
+            id="file"
             image-with-preview
             multiple
             ng-model = ctrl.image
-            accept="image/jpeg,image/png">
+            accept="image/jpeg,image/png"
+            ng-change="ctrl.data()">
       <br/>
-      <img ng-show="ctrl.image.src" alt="" ng-src="{{ctrl.image.src}}" ng-click="ctrl.data()">
+      <div ng-repeat="file in ctrl.result" class="" style="width: 100px; display: block; float: left; margin: 5px;">
+        <img ng-show="ctrl.image.src" ng-src="{{file.file.$$state.value}}"><br/>
+        <span>{{file.name}}</span>
+      </div>
     </div>
 
 
     <script type="text/javascript" src="projeto/node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="projeto/node_modules/ng-image-input-with-preview/dist/ng-image-input-with-preview.js"></script>
     <script type="text/javascript">
+      var test;
       const app = angular.module('app', ['ngImageInputWithPreview']);
 
-      app.controller('imgController', [imgController]);
+      app.controller('imgController', ['$scope', 'fileReader', imgController]);
 
-      function imgController(){
+      function imgController($scope, fileReader){
         vm = this;
         vm.title = "ng-image teste"
+        vm.result = []
 
         vm.data = function(){
-          console.log(vm.image);
+          var element = document.getElementById('file')
+          var files = element.files;
+
+          for (var i = 0; i < files.length; i++) {
+            vm.result.push({"name": files[i].name, "file": fileReader.readAsDataUrl(files[i], $scope)});
+          }
+          element.value=""
         }
       }
 
