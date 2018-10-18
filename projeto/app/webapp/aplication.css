@@ -76,3 +76,10 @@ footer.footer-app h6, footer.footer-app p{
   border-color: #6c757d;
   cursor: pointer;
 }
+.imagePreview {
+    height: 100px;width: 100px;
+    float: left;
+    /*background: #cccccc;*/
+    margin: 2px;
+    box-shadow: 2px 2px;
+}

@@ -944,32 +944,6 @@ window.onload = function () {
     window.addEventListener('mouseup', preview);
     window.addEventListener('touchend', preview);
 };
-function preview() {
-    if (crop.isImageSet()) {
-        var img = crop.getCroppedImage(600, 600);
-        img.onload = (function () { return previewLoaded(img); });
-    }
-}
-function previewLoaded(img) {
-    if (img) {
-        document.getElementById("preview").appendChild(img);
-    }
-}
-function handleFileToCrop(file) {
-    //var file = evt.target.files[0];
-    var reader = new FileReader();
-    var img = new Image();
-    img.addEventListener("load", function () {
-        crop.setImage(img);
-        preview();
-    }, false);
-    reader.onload = function () {
-        img.src = reader.result;
-    };
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
 //document.getElementById('fileInput').addEventListener('change', handleFileToCrop, false);
 //# sourceMappingURL=ImageCropperTest.js.map
 //# sourceMappingURL=ImageCropper.js.map

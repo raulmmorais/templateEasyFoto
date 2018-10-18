@@ -31,8 +31,44 @@
           .then(res => res.blob())
           .then(blob => {
             file = new File([blob], src.name , blob)
-            handleFileToCrop(file)
+            vm.handleFileToCrop(file, index)
           })
+        }
+
+        vm.handleFileToCrop = function(file, index){
+            var reader = new FileReader();
+            var img = new Image();
+            img.addEventListener("load", function () {
+                crop.setImage(img);
+                vm.preview(index);
+            }, false);
+            reader.onload = function () {
+                img.src = reader.result;
+            };
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        vm.preview = function(){
+            if (crop.isImageSet()) {
+                var img = crop.getCroppedImage(600, 600);
+                img.className = "imagePreview"
+                img.onload = (function () { return previewLoaded(img); });
+            }
         }
     }
 })()
+
+function preview() {
+    if (crop.isImageSet()) {
+        var img = crop.getCroppedImage(600, 600);
+        img.className = "imagePreview"
+        img.onload = (function () { return previewLoaded(img); });
+    }
+}
+function previewLoaded(img) {
+    if (img) {
+        document.getElementById("preview").appendChild(img);
+    }
+}
