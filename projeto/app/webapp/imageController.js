@@ -59,14 +59,6 @@
         }
     }
 })()
-
-function preview() {
-    if (crop.isImageSet()) {
-        var img = crop.getCroppedImage(600, 600);
-        img.className = "imagePreview"
-        img.onload = (function () { return previewLoaded(img); });
-    }
-}
 function previewLoaded(img) {
     if (img) {
         document.getElementById("preview").appendChild(img);
