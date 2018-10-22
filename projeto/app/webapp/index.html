@@ -49,7 +49,7 @@
                                       multiple
                                       ng-model = ctrl.image
                                       accept="image/jpeg,image/png"
-                                      ng-change="ctrl.test3()">
+                                      ng-change="ctrl.getImages()">
                             </div>
                             <div class="grid-cell-5">
                               <div class="container-thumbs">
@@ -68,7 +68,7 @@
                               </div>
                             </div>
                             <div id="preview" class="grid-cell-6 container-thumbs">
-                                <img ng-repeat="image in ctrl.images" ng-src="{{image.src}}" class="imagePreview"/>
+                                <img ng-repeat="file in ctrl.result" ng-src="{{file.croppedImage}}" class="imagePreview"/>
                                 <!--
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>

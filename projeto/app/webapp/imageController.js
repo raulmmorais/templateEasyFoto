@@ -11,17 +11,60 @@
         vm.result = [];
         vm.images = [];
         vm.index = 0;
-        vm.files = null;
+        vm.files = [];
 
         vm.getImages = function(){
-          console.log("Metodo getImages()");
+          console.log("Method getImages()");
+          vm.index = vm.result.length;
           const element = document.getElementById('files')
           let files = element.files
           for (var i = 0; i < files.length; i++) {
-            vm.result.push({"name": files[i].name, "image": fileReader.readAsDataUrl(files[i], $scope)});
+            vm.result.push({"name": files[i].name, "image": fileReader.readAsDataUrl(files[i], $scope), "file": files[i]});
           }
-
+          if(vm.result[vm.index]){
+            vm.reader(vm.result[vm.index].file);
+          }
           element.value = ""
+        }
+        vm.reader = function(file){
+
+          console.log("Method reader()");
+            var img = new Image();
+            var reader = new FileReader();
+            img.addEventListener("load", function(){
+                vm.cropper(img)
+            }, false);
+            reader.onload = function(){
+                img.src = reader.result;
+            }
+            if(file){
+                reader.readAsDataURL(file)
+            }
+        }
+        vm.cropper = function(img){
+          console.log("Method cropper()");
+          crop.setImage(img);
+          var imgCropped = crop.getCroppedImage(600, 600);
+          imgCropped.onload = (function(){
+            vm.result[vm.index].croppedImage = imgCropped.src;
+            vm.index++;
+            if(vm.result[vm.index]){
+              vm.reader(vm.result[vm.index].file);
+            }
+          });
+        }
+        vm.onLoadImage = function(index){
+          console.log("index: ", index);
+        }
+        vm.test4 = function(){
+            if(crop.isImageSet()){
+                var img = crop.getCroppedImage(600, 600);
+                //img.className = "imagePreview"
+                img.onload = (function () {
+                    console.log("add images");
+                    return vm.addCropedImage(img);
+                });
+            }
         }
 
         vm.deleteImage = function(index){
@@ -46,30 +89,6 @@
                 vm.result.push({"name": files[i].name, "image": fileReader.readAsDataUrl(files[i], $scope)});
             }
             vm.reader(vm.files[vm.index])
-        }
-        vm.test4 = function(){
-            if(crop.isImageSet()){
-                var img = crop.getCroppedImage(600, 600);
-                //img.className = "imagePreview"
-                img.onload = (function () {
-                    console.log("add images");
-                    return vm.addCropedImage(img);
-                });
-            }
-        }
-        vm.reader = function(file){
-            var img = new Image();
-            var reader = new FileReader();
-            img.addEventListener("load", function(){
-                crop.setImage(img);
-                vm.test4();
-            }, false);
-            reader.onload = function(){
-                img.src = reader.result;
-            }
-            if(file){
-                reader.readAsDataURL(file)
-            }
         }
         vm.addCropedImage = function(img){
             if(img){
