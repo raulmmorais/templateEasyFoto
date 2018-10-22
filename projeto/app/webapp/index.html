@@ -49,7 +49,7 @@
                                       multiple
                                       ng-model = ctrl.image
                                       accept="image/jpeg,image/png"
-                                      ng-change="ctrl.getImages()">
+                                      ng-change="ctrl.test3()">
                             </div>
                             <div class="grid-cell-5">
                               <div class="container-thumbs">
@@ -57,7 +57,7 @@
                                   <div class="thumb-delete">
                                     <a href="#" ng-click="ctrl.deleteImage($index)"><strong>x</strong></a>
                                   </div>
-                                  <img ng-show="ctrl.image.src" ng-src="{{file.image.$$state.value}}">
+                                  <img ng-show="ctrl.image.src" ng-src="{{file.image.$$state.value}}"/>
                                   <div class="thumb-play">
                                     <a href="#" ng-click="ctrl.cropImage($index)"><strong>></strong></a>
                                   </div>
@@ -68,6 +68,7 @@
                               </div>
                             </div>
                             <div id="preview" class="grid-cell-6 container-thumbs">
+                                <img ng-repeat="image in ctrl.images" ng-src="{{image.src}}" class="imagePreview"/>
                                 <!--
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
