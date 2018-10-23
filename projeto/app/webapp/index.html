@@ -51,8 +51,10 @@
                                       accept="image/jpeg,image/png"
                                       ng-change="ctrl.getImages()">
                             </div>
+                            <!--
                             <div class="grid-cell-5">
                               <div class="container-thumbs">
+
                                 <div class="thumbs" ng-repeat="file in ctrl.result">
                                   <div class="thumb-delete">
                                     <a href="#" ng-click="ctrl.deleteImage($index)"><strong>x</strong></a>
@@ -62,13 +64,24 @@
                                     <a href="#" ng-click="ctrl.cropImage($index)"><strong>></strong></a>
                                   </div>
                                 </div>
+
                               </div>
                               <div class="grid-cell-12" ng-show="ctrl.result.length > 0">
                                 <strong>Selecione a imagem para edição</strong>
                               </div>
                             </div>
-                            <div id="preview" class="grid-cell-6 container-thumbs">
-                                <img ng-repeat="file in ctrl.result" ng-src="{{file.croppedImage}}" class="imagePreview"/>
+                            -->
+                            <div id="preview" class="grid-cell-12 container-thumbs">
+                                <div class="thumbs" ng-repeat="file in ctrl.result" >
+                                    <div class="thumb-delete">
+                                        <a href="#" ng-click="ctrl.deleteImage($index)"><strong>x</strong></a>
+                                    </div>
+                                    <img ng-src="{{file.croppedImage}}" class="imagePreview"/>
+                                    <div class="thumb-play">
+                                        <a href="#" ng-click="ctrl.cropImage($index)"><strong>></strong></a>
+                                    </div>
+                                </div>
+
                                 <!--
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
                                 <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>

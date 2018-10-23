@@ -138,11 +138,11 @@
             }
         }
 
-        vm.preview = function(){
+        vm.preview = function(index){
             if (crop.isImageSet()) {
                 var img = crop.getCroppedImage(600, 600);
-                img.className = "imagePreview"
-                img.onload = (function () { return previewLoaded(img); });
+                //img.className = "imagePreview"
+                img.onload = (function () { return vm.result[index].croppedImage = img.src;});
             }
         }
     }
