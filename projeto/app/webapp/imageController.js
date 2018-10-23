@@ -153,3 +153,4 @@ function previewLoaded(img) {
     }
 }
 //I will use https://github.com/carlsednaoui/ouibounce to create a modal.
+//or https://github.com/likeastore/ngDialog#api
