@@ -29,10 +29,10 @@
     "gulp-util": "3.0.8",
     "gulp-watch": "4.3.11",
     "gulp-webserver": "0.9.1",
-    "run-sequence": "2.2.0"
+    "run-sequence": "2.2.0",
+    "ng-image-input-with-preview": "^1.0.0",
+    "ouibounce": "0.0.12"
   },
   "dependencies": {
-    "ng-image-input-with-preview": "^1.0.0",
-    "npm": "^6.4.1"
   }
 }

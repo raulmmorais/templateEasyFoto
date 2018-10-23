@@ -152,3 +152,4 @@ function previewLoaded(img) {
         document.getElementById("preview").appendChild(img);
     }
 }
+//I will use https://github.com/carlsednaoui/ouibounce to create a modal.
