@@ -33,6 +33,5 @@
     "ng-image-input-with-preview": "^1.0.0",
     "ouibounce": "0.0.12"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

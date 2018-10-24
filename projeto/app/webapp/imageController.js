@@ -12,6 +12,7 @@
         vm.images = [];
         vm.index = 0;
         vm.files = [];
+        vm.atualIndex = 0;
 
         vm.getImages = function(){
           console.log("Method getImages()");
@@ -50,6 +51,9 @@
             vm.index++;
             if(vm.result[vm.index]){
               vm.reader(vm.result[vm.index].file);
+            }else {
+              console.log("end of line");
+              setTimeout(function(){ vm.showNames(); }, 1000);
             }
           });
         }
@@ -81,15 +85,6 @@
             vm.handleFileToCrop(file, index)
           })
         }
-
-        vm.test3 = function(){
-            console.log("método test3()")
-            vm.files = document.getElementById('files').files;
-            for (var i = 0; i < files.length; i++) {
-                vm.result.push({"name": files[i].name, "image": fileReader.readAsDataUrl(files[i], $scope)});
-            }
-            vm.reader(vm.files[vm.index])
-        }
         vm.addCropedImage = function(img){
             if(img){
                 console.log('add cropped image')
@@ -99,36 +94,13 @@
             }
         }
 
-        vm.test = function(){
-            console.log("metodo test()")
-            const files = document.getElementById('files').files;
-            var reader = new FileReader();
-            var img = new Image();
-            img.addEventListener("load", function(){
-                crop.setImage(img);
-                vm.test2();
-            }, false);
-            reader.onload = function(){
-                img.src = reader.result;
-            }
-            if(files[0]){
-                reader.readAsDataURL(files[0])
-            }
-        }
-        vm.test2 = function(){
-            if(crop.isImageSet()){
-                var img = crop.getCroppedImage(600, 600);
-                img.className = "imagePreview"
-                img.onload = (function () { return previewLoaded(img); });
-            }
-        }
-
         vm.handleFileToCrop = function(file, index){
             var reader = new FileReader();
             var img = new Image();
             img.addEventListener("load", function () {
-                crop.setImage(img);
-                vm.preview(index);
+              vm.atualIndex = index;
+              crop.setImage(img);
+              modal.fire();
             }, false);
             reader.onload = function () {
                 img.src = reader.result;
@@ -145,6 +117,18 @@
                 img.onload = (function () { return vm.result[index].croppedImage = img.src;});
             }
         }
+
+        vm.accept = function(){
+          vm.preview(vm.atualIndex);
+          modalContainer.style.display = ""
+        }
+        vm.cancelEdit = function(){
+          modalContainer.style.display = ""
+        }
+
+        vm.showNames = function(){
+          vm.result.forEach(function(e, i){console.log(e.name)})
+        }
     }
 })()
 function previewLoaded(img) {
@@ -152,7 +136,8 @@ function previewLoaded(img) {
         document.getElementById("preview").appendChild(img);
     }
 }
-var modal = ouibounce(document.getElementById('ouibounce-modal'), {
+var modalContainer = document.getElementById('ouibounce-modal')
+var modal = ouibounce(modalContainer, {
     aggressive: true,
     timer: 0,
     callback: function() { console.log('ouibounce fired!'); }
