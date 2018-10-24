@@ -33,10 +33,8 @@
         <div class="content" ng-controller="appController as ctrl">
             <div class="differences">
                 <div class="grid-row">
-                    <div class="grid-cell-7">
-                        <canvas class="canvas-to-crop" id="imageToCrop" width="640" height="480"></canvas>
-                    </div>
-                    <div class="grid-cell-5">
+                    <div class="grid-cell-3"></div>
+                    <div class="grid-cell-6">
                         <div class="grid-row">
                             <div class="grid-cell-12">
                                 <h4><strong>{{ctrl.title}}</strong></h4>
@@ -92,12 +90,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="grid-cell-3"></div>
                 </div>
             </div>
 <!--
 		<div id="preview" style="display: none;"></div>
 -->
-		<div id="msg"></div>
+		    <div id="msg"></div>
+            <div id="ouibounce-modal">
+                <div class="underlay"></div>
+                <div class="modal">
+                    <div class="modal-title">
+                        <h3>Ajuste</h3>
+                    </div>
+                    <div class="modal-body">
+                        <canvas class="canvas-to-crop" id="imageToCrop" width="640" height="480"></canvas>
+                        <input type="button" class="btn btn-add-image" value="Ok"/>
+                        <input type="button" class="btn btn-add-image" value="Cancelar"/>
+                    </div>
+                </div>
+            </div>
         </div>
         <div ng-include="'template/footer.html'"></div>
     </div>

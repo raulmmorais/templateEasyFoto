@@ -12,6 +12,7 @@ gulp.task('deps.js', ()=>{
         'node_modules/angular-animate/angular-animate.min.js',
         'node_modules/angular-toastr/dist/angular-toastr.tpls.min.js',
         'node_modules/ng-image-input-with-preview/dist/ng-image-input-with-preview.js',
+        'node_modules/ouibounce/source/ouibounce.js',
     ])
         .pipe(uglify())
         .pipe(concat('deps.min.js'))

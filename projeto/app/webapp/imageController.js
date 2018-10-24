@@ -152,5 +152,10 @@ function previewLoaded(img) {
         document.getElementById("preview").appendChild(img);
     }
 }
+var modal = ouibounce(document.getElementById('ouibounce-modal'), {
+    aggressive: true,
+    timer: 0,
+    callback: function() { console.log('ouibounce fired!'); }
+});
 //I will use https://github.com/carlsednaoui/ouibounce to create a modal.
 //or https://github.com/likeastore/ngDialog#api

@@ -20,15 +20,15 @@ footer.footer-app h6, footer.footer-app p{
     overflow-y: auto;
 }
 .container-thumbs .thumbs{
-  height: 75px;
-  width: 130px;
+  height: 150px;
+  width: 150px;
   float: left;
-  margin: 2px
+  margin: 4px
 }
 .container-thumbs .thumbs img{
-  width: 130px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  max-height: 75px;
   top: -22px;
   position: relative;
 }
@@ -37,7 +37,7 @@ footer.footer-app h6, footer.footer-app p{
   width: 15px;
   position: relative;
   margin-top: 2px;
-  margin-left: 110px;
+  margin-left: 130px;
   z-index: 10;
 }
 .container-thumbs .thumbs .thumb-play{
@@ -45,7 +45,7 @@ footer.footer-app h6, footer.footer-app p{
   display: block;
   margin: 2px auto;
   position: relative;
-  top: -75px;
+  top: -100px;
 }
 .container-thumbs .thumbs .thumb-delete a, .container-thumbs .thumbs .thumb-play a{
   text-decoration: none;
@@ -80,6 +80,9 @@ footer.footer-app h6, footer.footer-app p{
     height: 100px;width: 100px;
     float: left;
     /*background: #cccccc;*/
-    margin: 2px;
-    box-shadow: 2px 2px;
+    margin: 3px;
+    box-shadow: 3px 3px;
+}
+#modal{
+    display: none;
 }
