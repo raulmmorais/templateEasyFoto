@@ -90,3 +90,6 @@ footer.footer-app h6, footer.footer-app p{
 #modal{
     display: none;
 }
+#ouibounce-modal{
+  z-index: 15;
+}
