@@ -91,7 +91,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid-cell-3"></div>
+                    <div class="grid-cell-3 pay-options">
+                        <div class="settings">
+                            <h4>
+                                <strong>Quadros</strong>
+                            </h4>
+                            <div class="grid-cell-12">
+                                <span>Quantidade: </span>
+                                <span>{{ctrl.qtdFrames}}</span>
+                            </div>
+                            <div class="grid-cell-12">
+                                <span>Valor a Pagar: </span>
+                                <strong>{{ctrl.valueToPay}}</strong>
+                                <span>R$</span>
+                            </div>
+                            <div class="grid-cell-12">
+                                <input type="button" value="Comprar" ng-click="ctrl.pay()"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 <!--

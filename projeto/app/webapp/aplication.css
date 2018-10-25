@@ -93,3 +93,6 @@ footer.footer-app h6, footer.footer-app p{
 #ouibounce-modal{
   z-index: 15;
 }
+.pay-options{
+    background: #FFFFFFcc;
+}
