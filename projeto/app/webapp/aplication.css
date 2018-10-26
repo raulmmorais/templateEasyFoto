@@ -24,7 +24,7 @@ footer.footer-app h6, footer.footer-app p{
     overflow-y: auto;
 }
 .container-thumbs .thumbs{
-  height: 150px;
+  height: 200px;
   width: 150px;
   float: left;
   margin: 4px
@@ -95,4 +95,17 @@ footer.footer-app h6, footer.footer-app p{
 }
 .pay-options{
     background: #FFFFFFcc;
+}
+.btn-min{
+  max-height: 24px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.btn-purple{
+  background: #5c2d91;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+.bad-image{
+  box-shadow: 3px 3px red;
 }

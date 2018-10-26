@@ -25,22 +25,29 @@
           if(vm.result[vm.index]){
             vm.reader(vm.result[vm.index].file);
           }
-          element.value = ""
+          //element.value = ""
         }
         vm.reader = function(file){
-
           console.log("Method reader()");
-            var img = new Image();
-            var reader = new FileReader();
-            img.addEventListener("load", function(){
-                vm.cropper(img)
-            }, false);
-            reader.onload = function(){
-                img.src = reader.result;
+          var img = new Image();
+          var reader = new FileReader();
+          img.addEventListener("load", function(){
+            width = img.width;
+            if(width < 1200){
+              console.log("bad image");
+              vm.result[vm.index].imgClass = "bad-image";
+            }else{
+              console.log("good image");
+              vm.result[vm.index].imgClass = "";
             }
-            if(file){
-                reader.readAsDataURL(file)
-            }
+            vm.cropper(img)
+          }, false);
+          reader.onload = function(){
+              img.src = reader.result;
+          }
+          if(file){
+              reader.readAsDataURL(file)
+          }
         }
         vm.cropper = function(img){
           console.log("Method cropper()");
@@ -143,4 +150,12 @@ var modal = ouibounce(modalContainer, {
         modal.disable();
     }
 });
+var windowHeight = window.innerHeight;
+var panelHeight = windowHeight - 168 - 115;
+var panelPay = document.getElementById("panel-pay");
+var panelImg = document.getElementById("panel-img");
+panelPay.style.height = panelHeight + "px";
+panelImg.style.height = panelHeight + "px";
+
 //I will use https://github.com/carlsednaoui/ouibounce to create a modal.
+//Do a test with https://robinparisi.github.io/tingle/ another modal plugin.

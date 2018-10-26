@@ -33,12 +33,12 @@
         <div class="content" ng-controller="appController as ctrl">
             <div class="differences">
                 <div class="grid-row">
-                    <div class="grid-cell-3"></div>
-                    <div class="grid-cell-6">
+                    <div class="grid-cell-2"></div>
+                    <div class="grid-cell-7" id="panel-img">
                         <div class="grid-row">
                             <div class="grid-cell-12">
                                 <h4><strong>{{ctrl.title}}</strong></h4>
-                                <label for="files" class="btn btn-add-image">Carregar imagens</label>
+                                <label for="files" class="btn btn-add-image btn-purple">Começar ></label>
                                 <input type="file"
                                       style="visibility: hidden;"
                                       name="image"
@@ -50,48 +50,18 @@
                                       ng-change="ctrl.getImages()">
                                 <input type="button" ng-click="ctrl.showNames()"/>
                             </div>
-                            <!--
-                            <div class="grid-cell-5">
-                              <div class="container-thumbs">
-
-                                <div class="thumbs" ng-repeat="file in ctrl.result">
-                                  <div class="thumb-delete">
-                                    <a href="#" ng-click="ctrl.deleteImage($index)"><strong>x</strong></a>
-                                  </div>
-                                  <img ng-show="ctrl.image.src" ng-src="{{file.image.$$state.value}}"/>
-                                  <div class="thumb-play">
-                                    <a href="#" ng-click="ctrl.cropImage($index)"><strong>></strong></a>
-                                  </div>
-                                </div>
-
-                              </div>
-                              <div class="grid-cell-12" ng-show="ctrl.result.length > 0">
-                                <strong>Selecione a imagem para edição</strong>
-                              </div>
-                            </div>
-                            -->
                             <div id="preview" class="grid-cell-12 container-thumbs">
                                 <div class="thumbs" ng-repeat="file in ctrl.result" >
-                                    <div class="thumb-delete">
-                                        <a href="#" ng-click="ctrl.deleteImage($index)"><strong>x</strong></a>
-                                    </div>
-                                    <img ng-src="{{file.croppedImage}}" class="imagePreview"/>
-                                    <div class="thumb-play">
-                                        <a href="#" ng-click="ctrl.cropImage($index)"><strong>></strong></a>
+                                    <img ng-src="{{file.croppedImage}}" class="imagePreview {{file.imgClass}}"/>
+                                    <div class="thumb-buttons">
+                                      <input class="btn btn-min btn-purple" type="button" value="Ajustar" ng-click="ctrl.cropImage($index)"/>
+                                      <input class="btn btn-min btn-purple" type="button" value="Remover" ng-click="ctrl.deleteImage($index)"/>
                                     </div>
                                 </div>
-
-                                <!--
-                                <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
-                                <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
-                                <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
-                                <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
-                                <div style="height: 100px;width: 100px;float: left;background: #cccccc;margin: 2px;box-shadow: 2px 2px;"></div>
-                                -->
                             </div>
                         </div>
                     </div>
-                    <div class="grid-cell-3 pay-options">
+                    <div id="panel-pay" class="grid-cell-3 pay-options">
                         <div class="settings">
                             <h4>
                                 <strong>Quadros</strong>
@@ -105,17 +75,16 @@
                                 <strong>{{ctrl.valueToPay}}</strong>
                                 <span>R$</span>
                             </div>
+                            <div class="msg">
+
+                            </div>
                             <div class="grid-cell-12">
-                                <input type="button" value="Comprar" ng-click="ctrl.pay()"/>
+                                <input class="btn btn-purple" type="button" value="Endereço de entrega" ng-click="ctrl.pay()"/>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-<!--
-		<div id="preview" style="display: none;"></div>
--->
-		    <div id="msg"></div>
             <div id="ouibounce-modal">
                 <div class="underlay"></div>
                 <div class="modal">
