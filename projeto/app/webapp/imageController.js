@@ -64,6 +64,7 @@
               setTimeout(function(){ vm.showNames(); }, 1000);
               //vm.qtdFrames = vm.result.length;
               vm.valueToPay = vm.getValueToPay(vm.qtdFrames);
+              $scope.$apply();
             }
           });
         }
