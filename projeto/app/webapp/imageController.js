@@ -119,7 +119,12 @@
         }
 
         vm.accept = function(){
-          vm.preview(vm.atualIndex);
+          //vm.preview(vm.atualIndex);
+          var img = crop.getCroppedImage(600, 600);
+          img.addEventListener('load', function(){
+            vm.result[vm.atualIndex].croppedImage = img.src;
+            $scope.$apply();
+          })
           modalContainer.style.display = ""
         }
         vm.cancelEdit = function(){
